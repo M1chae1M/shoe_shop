@@ -6,19 +6,19 @@ import Link from "next/link";
 import {HiOutlineArrowUturnLeft} from 'react-icons/hi2';
 import Router from "next/router";
 
-export async function getStaticPaths(){
-  return{
-    paths:[{params:{order:'15'}}],
-    fallback:true,
-  };
-}
+// export async function getStaticPaths(){
+//   return{
+//     paths:[{params:{order:'15'}}],
+//     fallback:true,
+//   };
+// }
 
-export async function getStaticProps(context){
-  const {order}=context.params;
-  return{props:{order}}
-}
+// export async function getStaticProps(context){
+//   const {order}=context.params;
+//   return{props:{order}}
+// }
 
-let task;
+// let task;
 
 class Order extends Component{
   state={
@@ -27,21 +27,21 @@ class Order extends Component{
   componentDidMount(){
     this.fetchOrder(this)
   }
-  componentDidUpdate(){
-      this.fetchOrder(this);
-      if(task) clearTimeout(task)
-      task=setTimeout(()=>{
-        if(this.state.data.length<1){
-          Router.push('/profile')
-        }
-      },1000)
-  }
-  shouldComponentUpdate(prevProps, prevState){
-    const condition1=JSON.stringify(prevState.data)!==JSON.stringify(this.state.data)
-    const condition2=this.props.order!==prevProps.order
-    if(condition1||condition2) return true
-    return false
-  }
+  // componentDidUpdate(){
+  //     this.fetchOrder(this);
+  //     if(task) clearTimeout(task)
+  //     task=setTimeout(()=>{
+  //       if(this.state.data.length<1){
+  //         Router.push('/profile')
+  //       }
+  //     },1000)
+  // }
+  // shouldComponentUpdate(prevProps, prevState){
+  //   const condition1=JSON.stringify(prevState.data)!==JSON.stringify(this.state.data)
+  //   const condition2=this.props.order!==prevProps.order
+  //   if(condition1||condition2) return true
+  //   return false
+  // }
   fetchOrder(comp){
     (async function(){
       if(localStorage?.getItem('token')){
@@ -60,8 +60,8 @@ class Order extends Component{
     })()
   }
   render(){
-    const {data}=this.state;
-    const order_cart=data?.order_cart?JSON.parse(data.order_cart):[];
+    // const {data}=this.state;
+    // const order_cart=data?.order_cart?JSON.parse(data.order_cart):[];
     const styles={
       product:{
         display:'grid',
@@ -112,10 +112,11 @@ class Order extends Component{
         },
       }
     }
-    const totalPrice=(order_cart?order_cart?.reduce((acc, elem)=>acc+elem.price*elem.howMany,0):0).toFixed(2);
+    // const totalPrice=(order_cart?order_cart?.reduce((acc, elem)=>acc+elem.price*elem.howMany,0):0).toFixed(2);
     return(
       <div style={styles.order}>
-        <Link href='/profile'>
+        120
+        {/* <Link href='/profile'>
           <HiOutlineArrowUturnLeft style={styles.backBTN} id="backBTN"/>
         </Link>
         <table style={styles.table.table} cellSpacing={1}>
@@ -144,7 +145,7 @@ class Order extends Component{
               <td style={styles.table.td}>{totalPrice} PLN</td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
       </div>
     )
   }
