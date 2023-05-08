@@ -1,0 +1,9 @@
+import mysql from 'mysql2';
+import {connection} from './connectionWithDB';
+
+module.exports=(req, res)=>{
+  const query=`SELECT * FROM products`;
+  connection.query(query, (err,resp)=>{
+    res.status(200).json({resp});
+  });
+};

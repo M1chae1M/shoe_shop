@@ -1,0 +1,20 @@
+import React, {Component} from "react";
+
+const ProductsHOC=(ToWrap)=>{
+  return class HOC extends Component{
+    state={
+      products:[],
+    }
+    componentDidMount(){
+      fetch('/api/products')
+      .then(res=>res.json())
+      .then(({resp})=>this.setState({products:resp},console.log(this.state.products)))
+    }
+    render(){
+      const {products}=this.state;
+      return <ToWrap products={products} {...this.props}/>
+    }
+  }
+}
+
+export default ProductsHOC;

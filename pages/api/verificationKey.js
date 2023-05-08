@@ -1,0 +1,1 @@
+export const verificationKey=process.env.VERIFICATION_KEY;

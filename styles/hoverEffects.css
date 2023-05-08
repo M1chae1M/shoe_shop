@@ -1,0 +1,16 @@
+img:hover~input,.addBTN:hover{
+opacity:1 !important;
+border:solid black 1px;
+}
+.MenuBTN:hover,.logout:hover{
+scale:115%;
+opacity:0.6;
+}
+.searchingElement:hover,.search:hover,.GreenBTN:hover,.field:hover,#bigPhoto:hover,.tr:hover{
+scale:105%;
+opacity:0.9;
+}
+#backBTN:hover{
+scale:145%;
+opacity:0.9;
+}
