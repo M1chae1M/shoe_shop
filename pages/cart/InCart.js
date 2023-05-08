@@ -27,7 +27,7 @@ export default class InCart extends Component{
       <Store.Consumer>
       {value=>{
         const {changeState}=value??{};
-        const totalPrice=(price * quantity)?.toFixed(2)??0
+        const totalPrice=(price * quantity).toFixed(2)
         const removeFromCart=()=>{
           let removeIndex;
           cart.map((x,i)=>{
@@ -45,7 +45,7 @@ export default class InCart extends Component{
             <div>
               <div>Name: {name}</div>
               <div>Size: {size}</div>
-              <div>Price: {price?.toFixed(2)??0} PLN</div>
+              <div>Price: {price.toFixed(2)} PLN</div>
               <div>How many: {quantity}</div>
               <div>Total: {totalPrice} PLN</div>
             </div>
