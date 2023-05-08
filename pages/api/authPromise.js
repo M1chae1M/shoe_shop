@@ -9,7 +9,7 @@ export default function auth(req, res){
 
   if(token){
     const decoded=JWT.decode(token, verificationKey);
-    const {login, password}=decoded;
+    const {login, password}=decoded??'';
     const query=loginQuery(login,password);
 
     return new Promise((resolve, reject)=>{

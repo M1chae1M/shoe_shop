@@ -33,7 +33,7 @@ export async function getStaticProps(ctx){
   return{props:{data}}
 }
 
-class Boot extends Component{
+export class Boot extends Component{
   state={
     sizeState:this.props.data.sizes.split(',')[0],
     howMany:1,
