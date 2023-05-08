@@ -1,0 +1,62 @@
+import {Component} from "react";
+import WithAuth from "../WithAuth";
+import HOC from "../HOC";
+import ImgFrame from "../ImgFrame";
+import Link from "next/link";
+import {HiOutlineArrowUturnLeft} from 'react-icons/hi2';
+import Router from "next/router";
+
+// // export async function getStaticPaths(){
+// //   return{
+// //     paths:[{params:{order:'123'}}],
+// //     // fallback:true,
+// //     fallback:false,
+// //   };
+// // }
+
+// // export async function getStaticProps(context){
+// //   const {order}=context.params;
+// //   return{props:{order}}
+// // }
+
+// class Order extends Component{
+//   render(){
+//     return(
+//       <div>
+//         Order
+//       </div>
+//     )
+//   }
+// }
+
+
+// export default WithAuth(HOC(Order));
+
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (let i = 110; i <= 130; i++) {
+    paths.push({ params: { order: i.toString() } });
+  }
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const orderId = params.order;
+  const orderData = { order: orderId, status: 'pending' };
+  return { props: { order: orderData } };
+}
+
+
+class Order extends Component {
+  render() {
+    return (
+      <div>
+        Order
+      </div>
+    )
+  }
+}
+
+export default WithAuth(HOC(Order));
+

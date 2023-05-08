@@ -1,4 +1,5 @@
 import {Html,Head,Main,NextScript} from 'next/document'
+import { Component } from 'react'
 
 export const glbl={
   _height:'30px',
@@ -21,3 +22,17 @@ export default function Document(){
     </Html>
   )
 }
+
+// export default class Document extends Component{
+//   render(){
+//     return(
+//     <Html lang="pl">
+//       <Head/>
+//       <body>
+//         <Main/>
+//         <NextScript/>
+//       </body>
+//     </Html>
+//     )
+//   }
+// }
