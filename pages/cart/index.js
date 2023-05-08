@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {HOC,Store} from "../HOC";
+import HOC,{Store} from "../HOC";
 import InCart from "./InCart";
 import GreenBTN from "../GreenBTN";
 import Link from "next/link";

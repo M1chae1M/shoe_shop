@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ProductsList from "./ProductsList/ProductsList";
 import TopFilters from "./Filters/TopFilters";
-import {HOC} from "./HOC";
+import HOC from "./HOC";
 import URL from "./URLfilter";
 import WithAuth from "./WithAuth";
 import ProductsHOC from "./ProductsHOC";

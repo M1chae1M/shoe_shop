@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import fetch from 'node-fetch';
-import {HOC,Store} from "../HOC";
+import HOC,{Store} from "../HOC";
 import {glbl} from "../_document";
 import ImgFrame from "../ImgFrame";
 import GreenBTN from "../GreenBTN";

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {HOC} from "../HOC";
+import HOC from "../HOC";
 import WithAuth from "../WithAuth";
 import WithLogin from "../login/WithLogin";
 import {TbLogout} from 'react-icons/tb';

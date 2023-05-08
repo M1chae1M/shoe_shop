@@ -51,3 +51,4 @@ export const HOC=(ToWrap)=>{
     }
   }
 }
+export default HOC;

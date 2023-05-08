@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {HOC} from "../HOC";
+import HOC from "../HOC";
 import WithAuth from "../WithAuth";
 import ImgFrame from "../ImgFrame";
 import Link from "next/link";
