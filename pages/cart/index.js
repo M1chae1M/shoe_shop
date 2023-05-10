@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import HOC,{Store} from "../HOC";
-// import InCart from "./InCart";
+import InCart from "./InCart";
 import GreenBTN from "../GreenBTN";
 import Link from "next/link";
 import WithAuth from "../WithAuth";
@@ -60,9 +60,9 @@ class OpenCart extends Component{
             <div style={styles.header}>Cart</div>
             {cart.length>0? 
               <>
-                {/* <div style={{...styles.cartList,...styles.size}}>
-                  {cart.map(({id,image,name,price,howMany,sizeState,time})=><InCart key={time} id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart}/>)}
-                </div> */}
+                <div style={{...styles.cartList,...styles.size}}>
+                  {cart?.map(({id,image,name,price,howMany,sizeState,time})=><InCart key={time} id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart}/>)}
+                </div>
                 <div style={styles.total}>
                 Total to be paid: {totalPaid} PLN
                   <GreenBTN value="PAY" className="GreenBTN" onClick={addToOrders}/>

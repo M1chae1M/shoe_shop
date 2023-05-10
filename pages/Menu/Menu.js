@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-// import SearchingList from "./SearchingList";
+import SearchingList from "./SearchingList";
 import Icons from "./Icons";
 import {glbl} from "../_app";
 
@@ -27,8 +27,8 @@ export default class Menu extends Component{
     return(
       <div id="Menu" style={styles.Menu}>
         <input className="search" style={styles.input} type="text" placeholder="search" onChange={searchItem} value={searchValue}/>
-        {/* <SearchingList/> */}
-        {/* <Icons/> */}
+        <SearchingList/>
+        <Icons/>
       </div>
     )
   }
