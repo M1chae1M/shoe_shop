@@ -12,6 +12,7 @@
 /.next/
 /out/
 .env
+.env.local
 dozrobienia.txt
 
 # production

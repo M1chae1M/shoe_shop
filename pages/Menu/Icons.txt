@@ -7,22 +7,22 @@ import {glbl} from "../_document";
 
 export default class Icons extends Component{
   render(){
-    const styles={
-      icon:{
-        fontSize:glbl._height,
-      },
-      profile:{
-        height:glbl._height,
-      },
-    }
+    // const styles={
+    //   icon:{
+    //     fontSize:glbl._height,
+    //   },
+    //   profile:{
+    //     height:glbl._height,
+    //   },
+    // }
     return(
       <Store.Consumer>
       {value=>{
-        const {cart,profile,logged}=value??{};
-        const {img}=profile??{};
+        // const {cart,profile,logged}=value??{};
+        // const {img}=profile??{};
         return(
           <>
-            <MenuBTN href="/">
+            {/* <MenuBTN href="/">
               <AiOutlineHome style={styles.icon}/>
             </MenuBTN>
             <MenuBTN href="/profile">
@@ -32,7 +32,7 @@ export default class Icons extends Component{
             </MenuBTN>
             <MenuBTN number={cart.length} href='/cart'>
               <AiOutlineShoppingCart style={styles.icon}/>
-            </MenuBTN>
+            </MenuBTN> */}
           </>
         )
       }}

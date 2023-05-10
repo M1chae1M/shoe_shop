@@ -51,12 +51,16 @@ export default class SearchingList extends Component{
       <Store.Consumer>
       {value=>{
         const {search,changeState}=value??{};
+        const sliced=search?.slice(0,5)||search;
         const closeList=()=>changeState({searchValue:'',search:[]});
         const clickBground=(e)=>{if(e.target.id==='Background') closeList()};
         return(
           <>
             <ul style={styles.ul}>
-              {search.slice(0,5).map(({name,id,image})=>
+              {
+              // search.slice(0,5)
+              sliced
+              .map(({name,id,image})=>
                 <Link href={`/products/${id}`} key={name} style={styles.link} onClick={closeList}>
                   <li style={styles.li} className="searchingElement">
                     <ImgFrame src={image} shadow={styles.shadowNone} alt={`image of ${name}`} x='60px' y='40px'/> {name}
