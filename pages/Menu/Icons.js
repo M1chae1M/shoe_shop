@@ -22,7 +22,7 @@ export default class Icons extends Component{
         const {img}=profile??{};
         return(
           <>
-            {/* <MenuBTN href="/">
+            <MenuBTN href="/">
               <AiOutlineHome style={styles.icon}/>
             </MenuBTN>
             <MenuBTN href="/profile">
@@ -30,9 +30,9 @@ export default class Icons extends Component{
                 <img style={{...styles.icon,...styles.profile}} src={img} alt='profile icon'/>:
               <CgProfile style={styles.icon}/>}
             </MenuBTN>
-            <MenuBTN number={cart.length} href='/cart'>
+            <MenuBTN number={cart?.length} href='/cart'>
               <AiOutlineShoppingCart style={styles.icon}/>
-            </MenuBTN> */}
+            </MenuBTN>
           </>
         )
       }}
