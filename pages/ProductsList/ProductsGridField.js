@@ -3,7 +3,7 @@ import Link from "next/link";
 import {Store} from "../HOC";
 import ImgFrame from "../ImgFrame";
 import GreenBTN from "../GreenBTN";
-// import Modal from '../Modal/Modal';
+import Modal from '../Modal/Modal';
 import {glbl} from "../_app";
 
 export default class ProductsGridField extends Component{
@@ -22,9 +22,9 @@ export default class ProductsGridField extends Component{
       <Store.Consumer>
       {value=>{
         const {saveToLocalStorage,products}=value??{};
-        const acObj=products.filter(x=>x.id===id)[0];
-        const {name,image,price,quantity}=acObj;
-        const sizes=acObj.sizes.split(',')
+        const acObj=products?.filter(x=>x.id===id)?.[0];
+        const {name,image,price,quantity}=acObj??'';
+        const sizes=acObj?.sizes?.split(',')
 
         const closeModal=(e)=>{
           e.preventDefault();
@@ -49,7 +49,7 @@ export default class ProductsGridField extends Component{
                 </ImgFrame>
               </div>
             </Link>
-            {/* {openModal && <Modal quantity={quantity} sizes={sizes} closeModal={closeModal} addToCart={addToCart}/>} */}
+            {openModal && <Modal quantity={quantity} sizes={sizes} closeModal={closeModal} addToCart={addToCart}/>}
           </>
         )
       }}

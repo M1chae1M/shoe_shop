@@ -58,9 +58,7 @@ export default class SearchingList extends Component{
           <>
             <ul style={styles.ul}>
               {
-              // search.slice(0,5)
-              sliced
-              .map(({name,id,image})=>
+              sliced?.map(({name,id,image})=>
                 <Link href={`/products/${id}`} key={name} style={styles.link} onClick={closeList}>
                   <li style={styles.li} className="searchingElement">
                     <ImgFrame src={image} shadow={styles.shadowNone} alt={`image of ${name}`} x='60px' y='40px'/> {name}
@@ -68,7 +66,7 @@ export default class SearchingList extends Component{
                 </Link>
               )}
             </ul>
-            {search.length>0 && <Background bgc={'transparent'} zidx='1300' onMouseDown={clickBground}/>}
+            {search?.length>0 && <Background bgc={'transparent'} zidx='1300' onMouseDown={clickBground}/>}
           </>
         )
       }}

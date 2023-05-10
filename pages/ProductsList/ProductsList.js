@@ -22,7 +22,7 @@ export default class ProductsList extends Component{
     }
     return(
       <div style={styles.ProductsList}>
-        {/* <Store.Consumer>
+        <Store.Consumer>
         {value=>{
           const {products,order,sex,type}=value??{};
           function sortByPriceAsc(products){
@@ -82,7 +82,7 @@ export default class ProductsList extends Component{
                 return sortByQuantityDsc(products);
               }
               default:{
-                return sorted;
+          return products;
               }
             };
           })()
@@ -112,9 +112,9 @@ export default class ProductsList extends Component{
               }
             }
           })()
-          return sorted.map(({image,id})=><ProductsGridField id={id} key={id} src={image}/>)
+          return sorted?.map(({image,id})=><ProductsGridField id={id} key={id} src={image}/>)
         }}
-        </Store.Consumer> */}
+        </Store.Consumer>
       </div>
     )
   }
