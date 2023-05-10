@@ -41,7 +41,7 @@ export default class TopFilters extends Component{
           changeURL({[key]:value});
         }
         const changeOrder=(e)=>changeState({order:e.target.value});
-        const sexSelectCValue=sex.charAt(0).toUpperCase()+sex.slice(1);
+        const sexSelectCValue=sex?.charAt?.(0).toUpperCase()+sex?.slice?.(1);
         const allOptions=order.map(({value,text})=><Option key={text} value={value}>{text}</Option>);
         return(
           <div style={styles.TopFilters}>
