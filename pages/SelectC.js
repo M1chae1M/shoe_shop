@@ -30,7 +30,7 @@ export class Option extends Component{
   }
 }
 
-export default class Select extends Component{
+export default class SelectC extends Component{
   render(){
     const {children, className}=this.props;
     return(

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Store} from "../HOC";
 import Router from "next/router";
-import Select, {Option} from "../Select";
+import SelectC, {Option} from "../SelectC";
 
 export default class TopFilters extends Component{
   render(){
@@ -41,27 +41,27 @@ export default class TopFilters extends Component{
           changeURL({[key]:value});
         }
         const changeOrder=(e)=>changeState({order:e.target.value});
-        const sexSelectValue=sex.charAt(0).toUpperCase()+sex.slice(1);
+        const sexSelectCValue=sex.charAt(0).toUpperCase()+sex.slice(1);
         const allOptions=order.map(({value,text})=><Option key={text} value={value}>{text}</Option>);
         return(
           <div style={styles.TopFilters}>
             <div id="order">
               {'Order by: '}
-              <Select onChange={changeOrder}>
+              <SelectC onChange={changeOrder}>
                 {allOptions}
-              </Select>
+              </SelectC>
             </div>
             <div id="sex">
               {'Sex: '}
-              <Select value={sexSelectValue} onChange={(e)=>{onChange(e,'sex')}}>
+              <SelectC value={sexSelectCValue} onChange={(e)=>{onChange(e,'sex')}}>
                 {sexes.map(x=><Option value={x} key={x}>{x}</Option>)}
-              </Select>
+              </SelectC>
             </div>
             <div id="types">
               {'Types: '}
-              <Select value={type} onChange={(e)=>{onChange(e,'type')}}>
+              <SelectC value={type} onChange={(e)=>{onChange(e,'type')}}>
                 {types.map((kind)=><Option value={kind} key={kind}>{kind}</Option>)}
-              </Select>
+              </SelectC>
             </div>
           </div>
         )

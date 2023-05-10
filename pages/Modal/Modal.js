@@ -2,7 +2,9 @@ import React, {Component} from "react";
 import GreenBTN from "../GreenBTN";
 import Background from "./Background";
 import Number from "../Number";
-import Select,{Option} from "../Select";
+// import SelectC,{Option} from "../SelectC";
+import SelectC from "../SelectC";
+import {Option} from "../SelectC";
 
 export default class Modal extends Component{
   state={
@@ -46,18 +48,18 @@ export default class Modal extends Component{
     const clickModal=(e)=>e.target.id==='Background'&&closeModal(e);
     const onChange=(e)=>this.setState({size:e.target.value});
     return(
-      // <Background bgc='rgb(128 128 128/60%)' zidx='2000' onMouseDown={clickModal}>
-      //   <div style={styles.Modal}>
+      <Background bgc='rgb(128 128 128/60%)' zidx='2000' onMouseDown={clickModal}>
+        <div style={styles.Modal}>
           <div style={styles.change}>
-            {/* How many: <Number value={howMany} onChange={changeHowMany}/>
+            How many: <Number value={howMany} onChange={changeHowMany}/>
             {' Size: '}
-            <Select value={size} onChange={onChange} className="GreenBTN">
+            {/* <SelectC value={size} onChange={onChange} className="GreenBTN">
               {sizes.map(x=><Option key={x} value={x}>{x}</Option>)}
-            </Select> */}
+            </SelectC> */}
           </div>
-      //     {/* <GreenBTN value='Add to cart' onClick={addAndClose} className="GreenBTN"/>
-      //   </div>
-      // </Background> */}
+          <GreenBTN value='Add to cart' onClick={addAndClose} className="GreenBTN"/>
+        </div>
+      </Background>
     )
   }
 }

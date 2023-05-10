@@ -7,19 +7,19 @@ import {glbl} from "../_app";
 
 export default class Icons extends Component{
   render(){
-    // const styles={
-    //   icon:{
-    //     fontSize:glbl._height,
-    //   },
-    //   profile:{
-    //     height:glbl._height,
-    //   },
-    // }
+    const styles={
+      icon:{
+        fontSize:glbl._height,
+      },
+      profile:{
+        height:glbl._height,
+      },
+    }
     return(
       <Store.Consumer>
       {value=>{
-        // const {cart,profile,logged}=value??{};
-        // const {img}=profile??{};
+        const {cart,profile,logged}=value??{};
+        const {img}=profile??{};
         return(
           <>
             {/* <MenuBTN href="/">
