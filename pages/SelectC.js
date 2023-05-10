@@ -19,7 +19,7 @@ const styles={
   },
 }
 
-export class Option extends Component{
+export class OptionC extends Component{
   render(){
     const {children}=this.props;
     return(

@@ -2,9 +2,7 @@ import React, {Component} from "react";
 import GreenBTN from "../GreenBTN";
 import Background from "./Background";
 import Number from "../Number";
-// import SelectC,{Option} from "../SelectC";
-import SelectC from "../SelectC";
-import {Option} from "../SelectC";
+import SelectC,{OptionC} from "../SelectC";
 
 export default class Modal extends Component{
   state={
@@ -53,9 +51,9 @@ export default class Modal extends Component{
           <div style={styles.change}>
             How many: <Number value={howMany} onChange={changeHowMany}/>
             {' Size: '}
-            {/* <SelectC value={size} onChange={onChange} className="GreenBTN">
-              {sizes.map(x=><Option key={x} value={x}>{x}</Option>)}
-            </SelectC> */}
+            <SelectC value={size} onChange={onChange} className="GreenBTN">
+              {sizes?.map(x=><OptionC key={x} value={x}>{x}</OptionC>)}
+            </SelectC>
           </div>
           <GreenBTN value='Add to cart' onClick={addAndClose} className="GreenBTN"/>
         </div>
