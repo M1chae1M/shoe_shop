@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {glbl} from "./_document";
+import {glbl} from "./_app";
 
 export default class GreenBTN extends Component{
   render(){

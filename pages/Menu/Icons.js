@@ -3,7 +3,7 @@ import {AiOutlineShoppingCart,AiOutlineHome} from 'react-icons/ai';
 import {CgProfile} from 'react-icons/cg';
 import {Store} from "../HOC";
 import MenuBTN from "./MenuBTN";
-import {glbl} from "../_document";
+import {glbl} from "../_app";
 
 export default class Icons extends Component{
   render(){

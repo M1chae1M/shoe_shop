@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import {Store} from "../HOC";
 import ImgFrame from "../ImgFrame";
 import {CgClose} from 'react-icons/cg';
-import {glbl} from "../_document";
+import {glbl} from "../_app";
 import Link from "next/link";
 
 export default class InCart extends Component{

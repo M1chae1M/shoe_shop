@@ -1,6 +1,6 @@
 import {Store} from "../HOC";
 import Link from "next/link";
-import {glbl} from "../_document";
+import {glbl} from "../_app";
 import React, {Component} from "react";
 import ImgFrame from "../ImgFrame";
 import Background from "../Modal/Background";

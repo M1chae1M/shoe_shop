@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import SearchingList from "./SearchingList";
+// import SearchingList from "./SearchingList";
 import Icons from "./Icons";
-import {glbl} from "../_document";
+import {glbl} from "../_app";
 
 export default class Menu extends Component{
   render(){

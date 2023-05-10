@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-// import Menu from "./Menu/Menu";
+import Menu from "./Menu/Menu";
 
 export const Store=React.createContext();
 
@@ -44,7 +44,7 @@ export const HOC=(ToWrap)=>{
       const type=this.props.type?this.props.type:this.state.type;
       return(
         <Store.Provider value={{products,order,sex,type,search,cart,profile,logged,changeState,saveToLocalStorage}}>
-          {/* <Menu searchItem={searchItem} searchValue={searchValue}/> */}
+          <Menu searchItem={searchItem} searchValue={searchValue}/>
           <ToWrap profile={profile} {...this.props}/>
         </Store.Provider>
       )

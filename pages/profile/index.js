@@ -3,7 +3,7 @@ import HOC from "../HOC";
 import WithAuth from "../WithAuth";
 import WithLogin from "../login/WithLogin";
 import {TbLogout} from 'react-icons/tb';
-import {glbl} from "../_document";
+// import {glbl} from "../_app";
 import {Store} from "../HOC";
 import OrdersList from "./OrdersList";
 
@@ -22,7 +22,7 @@ class Profile extends Component{
       },
       logout:{
         cursor:'pointer',
-        fontSize:glbl._height,
+        // fontSize:glbl._height,
         position:'absolute',
         right:'0%',
         top:'0%',

@@ -4,7 +4,7 @@ import {Store} from "../HOC";
 import ImgFrame from "../ImgFrame";
 import GreenBTN from "../GreenBTN";
 // import Modal from '../Modal/Modal';
-import {glbl} from "../_document";
+import {glbl} from "../_app";
 
 export default class ProductsGridField extends Component{
   state={
