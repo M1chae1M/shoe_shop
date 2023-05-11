@@ -36,7 +36,7 @@ const WithLogin=(ToWrap)=>{
         }
         const tryToLogIn=(e)=>{
           e.preventDefault();
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`,{
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}login`,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({
@@ -54,7 +54,7 @@ const WithLogin=(ToWrap)=>{
         }
         const signIn=(e)=>{
           console.log('sign in')
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/signIn`,{
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}signIn`,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({

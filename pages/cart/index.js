@@ -46,7 +46,7 @@ class OpenCart extends Component{
         const totalPaid=(cart.reduce((acc, elem)=>acc+elem.price*elem.howMany,0)).toFixed(2);
         const addToOrders=()=>{
           if(token){
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/addorder`,{
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}addorder`,{
               method:'POST',
               headers:{'Content-Type':'application/json'},
               body:JSON.stringify({token, cart})
