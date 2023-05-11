@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Store} from "../HOC";
 import ProductsGridField from "./ProductsGridField";
 import {glbl,sort} from "../_app";
+
 export default class ProductsList extends Component{
   render(){
     const styles={

@@ -8,14 +8,34 @@ import {glbl} from "../_app";
 
 export default class ProductsGridField extends Component{
   state={
+    loading:true,
     openModal:false,
   }
   render(){
-    const {openModal}=this.state;
+    const {openModal,loading}=this.state;
     const {src,id}=this.props;
     const styles={
       field:{
         transition:'all 0.125s ease-in-out',
+      },
+      loading:{
+        height:glbl._field_height,
+        width:glbl._field_height,
+        overflow:'hidden',
+        display:'grid',
+        justifyItems:'center',
+        alignItems:'center',
+        justifyContent:'center',
+        alignContent:'center',
+        textDecoration:'none',
+        color:'black',
+        position:'relative',
+        boxShadow:'2px 2px grey, -2px -2px grey',
+        justifyItems:'center',
+        transition:'all 0.125s ease-in-out',
+      },
+      hide:{
+        display:'none',
       }
     }
     return(
@@ -24,7 +44,7 @@ export default class ProductsGridField extends Component{
         const {saveToLocalStorage,products}=value??{};
         const acObj=products?.filter(x=>x.id===id)?.[0];
         const {name,image,price,quantity}=acObj??'';
-        const sizes=acObj?.sizes?.split(',')
+        const sizes=acObj?.sizes?.split(',');
 
         const closeModal=(e)=>{
           e.preventDefault();
@@ -40,11 +60,15 @@ export default class ProductsGridField extends Component{
           e.preventDefault();
           this.setState({openModal:true});
         }
+        const loaded=()=>{
+          this.setState({loading:false});
+        }
         return(
           <>
-            <Link href={`products/${id}`}>
+            {loading && <div className="field" style={{...styles.field,...styles.loading}}>loading</div>}
+            <Link href={`products/${id}`} style={loading?styles.hide:{display:'grid'}}>
               <div className="field" style={styles.field}>
-                <ImgFrame src={src} alt={`photo of boots with id: ${id}`} x={glbl._field_height} y={glbl._field_height}>
+                <ImgFrame src={src} alt={`photo of boots with id: ${id}`} x={glbl._field_height} y={glbl._field_height} loaded={loaded}>
                   <GreenBTN value="Add to cart" onClick={showModal} className="addBTN" hidden={true}/>
                 </ImgFrame>
               </div>
