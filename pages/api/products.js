@@ -4,6 +4,11 @@ import {connection} from './connectionWithDB';
 module.exports=(req, res)=>{
   const query=`SELECT * FROM products`;
   connection.query(query, (err,resp)=>{
-    res.status(200).json({resp});
+    if(err){
+      console.error(err);
+    }
+    else{
+      res.status(200).json({resp});
+    }
   });
 };
