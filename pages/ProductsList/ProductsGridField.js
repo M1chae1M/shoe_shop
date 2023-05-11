@@ -5,6 +5,7 @@ import ImgFrame from "../ImgFrame";
 import GreenBTN from "../GreenBTN";
 import Modal from '../Modal/Modal';
 import {glbl} from "../_app";
+import Spinner from "../Spinner";
 
 export default class ProductsGridField extends Component{
   state={
@@ -65,7 +66,7 @@ export default class ProductsGridField extends Component{
         }
         return(
           <>
-            {loading && <div className="field" style={{...styles.field,...styles.loading}}>loading</div>}
+            {loading && <div className="field" style={{...styles.field,...styles.loading}}><Spinner/></div>}
             <Link href={`products/${id}`} style={loading?styles.hide:{display:'grid'}}>
               <div className="field" style={styles.field}>
                 <ImgFrame src={src} alt={`photo of boots with id: ${id}`} x={glbl._field_height} y={glbl._field_height} loaded={loaded}>

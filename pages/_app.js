@@ -3,6 +3,7 @@ import ErrorPage from './404';
 import '../styles/globals.css';
 import '../styles/scroll.css';
 import '../styles/hoverEffects.css';
+import '../styles/spin.css';
 
 export const glbl={
   _height:'30px',

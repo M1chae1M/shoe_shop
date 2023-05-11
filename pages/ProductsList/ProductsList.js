@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Store} from "../HOC";
 import ProductsGridField from "./ProductsGridField";
 import {glbl,sort} from "../_app";
+import Spinner from "../Spinner";
 
 export default class ProductsList extends Component{
   render(){
@@ -88,13 +89,12 @@ export default class ProductsList extends Component{
               }
             }
           })()
-          // return sorted?.map(({image,id})=><ProductsGridField id={id} key={id} src={image}/>)
           return(
             <>
               {
-              products?.length>0?
-              sorted?.map(({image,id})=><ProductsGridField id={id} key={id} src={image}/>):
-              <div style={styles.loading}>loading...</div>
+                products?.length>0?
+                  sorted?.map(({image,id})=><ProductsGridField id={id} key={id} src={image}/>):
+                    <div style={styles.loading}><Spinner/></div>
               }
             </>
           )
