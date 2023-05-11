@@ -15,7 +15,7 @@ export default function auth(req, res){
     return new Promise((resolve, reject)=>{
       connection.query(query, (err, data)=>{
         if(err) reject(err);
-        else if(data.length > 0) resolve({data, login, token});
+        else if(data?.length > 0) resolve({data, login, token});
         else resolve({data:[], login, token});
       });
     });
