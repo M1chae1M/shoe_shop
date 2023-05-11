@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {Store} from "../HOC";
 import ProductsGridField from "./ProductsGridField";
-import {glbl} from "../_app";
-
+import {glbl,sort} from "../_app";
 export default class ProductsList extends Component{
   render(){
     const styles={
@@ -81,52 +80,5 @@ export default class ProductsList extends Component{
         </Store.Consumer>
       </div>
     )
-  }
-}
-
-const sort={
-  price:{
-    asc:function(products){
-      return products?.sort((a, b)=>a.price - b.price);
-    },
-    dsc:function(products){
-      return products?.sort((a, b) =>b.price-a.price);
-    }
-  },
-  name:{
-    dsc:  function(products){
-      return products?.sort((a, b)=>{
-        const nameA=a.name.toUpperCase();
-        const nameB=b.name.toUpperCase();
-        if (nameA>nameB) return -1
-        if (nameA<nameB) return 1
-        return 0;
-      });
-    },
-    asc:function(products){
-      return products?.sort(function(a, b){
-        const nameA=a.name.toUpperCase();
-        const nameB=b.name.toUpperCase();
-        if (nameA<nameB) return -1;
-        if (nameA>nameB) return 1;
-        return 0;
-      });
-    },
-  },
-  quantity:{
-    asc:function(products){
-      return products?.sort((a, b)=>a.quantity-b.quantity);
-    },
-    dsc:function(products){
-      return products?.sort((a, b) =>b.quantity-a.quantity);
-    }
-  },
-  types:{
-    sex:function(products,sex){
-      return products?.filter(x=>x.sex.toLowerCase()===sex)
-    },
-    type:function(products,type){
-      return products?.filter(x=>x.category===type)
-    }
   }
 }
