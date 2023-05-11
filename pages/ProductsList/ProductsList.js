@@ -26,13 +26,13 @@ export default class ProductsList extends Component{
         {value=>{
           const {products,order,sex,type}=value??{};
           function sortByPriceAsc(products){
-            return products.sort((a, b)=>a.price - b.price);
+            return products?.sort((a, b)=>a.price - b.price);
           }
           function sortByPriceDsc(products){
-            return products.sort((a, b) =>b.price-a.price);
+            return products?.sort((a, b) =>b.price-a.price);
           }
           function sortByNameAsc(products){
-            return products.sort(function(a, b){
+            return products?.sort(function(a, b){
               var nameA=a.name.toUpperCase();
               var nameB=b.name.toUpperCase();
               if (nameA<nameB) return -1;
@@ -41,7 +41,7 @@ export default class ProductsList extends Component{
             });
           }
           function sortByNameDsc(products){
-            return products.sort((a, b)=>{
+            return products?.sort((a, b)=>{
               const nameA=a.name.toUpperCase();
               const nameB=b.name.toUpperCase();
               if (nameA>nameB) return -1
@@ -50,10 +50,10 @@ export default class ProductsList extends Component{
             });
           }
           function sortByQuantityAsc(products){
-            return products.sort((a, b)=>a.quantity-b.quantity);
+            return products?.sort((a, b)=>a.quantity-b.quantity);
           }
           function sortByQuantityDsc(products){
-            return products.sort((a, b) =>b.quantity-a.quantity);
+            return products?.sort((a, b) =>b.quantity-a.quantity);
           }
           function sortBySex(products){
             return products.filter(x=>x.sex.toLowerCase()===sex)
