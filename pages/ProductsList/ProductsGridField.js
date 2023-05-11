@@ -61,7 +61,7 @@ export default class ProductsGridField extends Component{
           e.preventDefault();
           this.setState({openModal:true});
         }
-        const loaded=()=>{
+        const endloading=()=>{
           this.setState({loading:false});
         }
         return(
@@ -69,7 +69,7 @@ export default class ProductsGridField extends Component{
             {loading && <div className="field" style={{...styles.field,...styles.loading}}><Spinner/></div>}
             <Link href={`products/${id}`} style={loading?styles.hide:{display:'grid'}}>
               <div className="field" style={styles.field}>
-                <ImgFrame src={src} alt={`photo of boots with id: ${id}`} x={glbl._field_height} y={glbl._field_height} loaded={loaded}>
+                <ImgFrame src={src} alt={`photo of boots with id: ${id}`} x={glbl._field_height} y={glbl._field_height} endloading={endloading}>
                   <GreenBTN value="Add to cart" onClick={showModal} className="addBTN" hidden={true}/>
                 </ImgFrame>
               </div>

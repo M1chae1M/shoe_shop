@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 export default class ImgFrame extends Component{
   render(){
-    const {src,alt,children,className,x,y,id,loaded}=this.props;
+    const {src,alt,children,className,x,y,id,endloading}=this.props;
     const styles={
       ImgFrame:{
         height:y,
@@ -26,7 +26,7 @@ export default class ImgFrame extends Component{
     }
     return(
       <div style={{...styles.ImgFrame,...this.props.shadow}} id={id}>
-        <img style={styles.img} src={src} alt={alt} onLoad={loaded}/>
+        <img style={styles.img} src={src} alt={alt} onLoad={endloading}/>
         {children}
       </div>
     )

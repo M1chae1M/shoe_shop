@@ -1,13 +1,18 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import HOC,{Store} from "../HOC";
 import InCart from "./InCart";
 import GreenBTN from "../GreenBTN";
 import Link from "next/link";
 import WithAuth from "../WithAuth";
 import Router from "next/router";
+import Spinner from "../Spinner";
 
 class OpenCart extends Component{
+  state={
+    loading:true,
+  }
   render(){
+    const {loading}=this.state;
     const styles={
       cart:{
         display:'grid',
@@ -37,6 +42,9 @@ class OpenCart extends Component{
         fontSize:'1.2rem',
         fontWeight:'bold',
       },
+      hidden:{
+        display:'none',
+      },
     }
     return(
       <Store.Consumer>
@@ -55,30 +63,36 @@ class OpenCart extends Component{
             .then(changeState({cart:[]}))
           }else Router.push('/profile')
         }
+        const endloading=()=>{
+          this.setState({loading:false})
+        }
         return(
           <div style={styles.cart}>
-            <div style={styles.header}>Cart</div>
-            {cart.length>0? 
-              <>
-                <div style={{...styles.cartList,...styles.size}}>
-                  {cart?.map(({id,image,name,price,howMany,sizeState,time})=><InCart key={time} id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart}/>)}
+            {loading && <Spinner/>}
+            <div style={{...styles.header}}>Cart</div>
+            {
+              cart.length>0?
+                <div style={styles.hidden}>
+                  <div style={{...styles.cartList,...styles.size}}>
+                    {cart?.map(({id,image,name,price,howMany,sizeState,time})=>
+                    <InCart key={time} id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart} endloading={endloading}/>)}
+                  </div>
+                  <div style={styles.total}>
+                  Total to be paid: {totalPaid} PLN
+                    <GreenBTN value="PAY" className="GreenBTN" onClick={addToOrders}/>
+                  </div>
+                </div>:
+                <div style={styles.hidden}>
+                  <div style={styles.size}>
+                    <div style={styles.empty}>Your cart is empty</div>
+                  </div>
+                  <div style={styles.total}>
+                    First you need to add your orders to the cart
+                    <Link href='/'>
+                      <GreenBTN value="Back to shop" className="GreenBTN"/>
+                    </Link>
+                  </div>
                 </div>
-                <div style={styles.total}>
-                Total to be paid: {totalPaid} PLN
-                  <GreenBTN value="PAY" className="GreenBTN" onClick={addToOrders}/>
-                </div>
-              </>:
-              <>
-                <div style={styles.size}>
-                  <div style={styles.empty}>Your cart is empty</div>
-                </div>
-                <div style={styles.total}>
-                  First you need to add your orders to the cart
-                  <Link href='/'>
-                    <GreenBTN value="Back to shop" className="GreenBTN"/>
-                  </Link>
-                </div>
-              </>
             }
           </div>
         )
