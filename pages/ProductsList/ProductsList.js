@@ -18,6 +18,18 @@ export default class ProductsList extends Component{
         minHeight:`calc(${glbl._field_height} * 3 + 4 * 4px)`,
         maxHeight:`calc(${glbl._field_height} * 3 + 4 * 4px)`,
         height:'fit-content',
+        position:'relative',
+      },
+      loading:{
+        position:'absolute',
+        display:'grid',
+        justifyItems:'center',
+        alignItems:'center',
+        top:0,
+        bottom:0,
+        left:0,
+        right:0,
+        margin:'auto',
       }
     }
     return(
@@ -76,7 +88,16 @@ export default class ProductsList extends Component{
               }
             }
           })()
-          return sorted?.map(({image,id})=><ProductsGridField id={id} key={id} src={image}/>)
+          // return sorted?.map(({image,id})=><ProductsGridField id={id} key={id} src={image}/>)
+          return(
+            <>
+              {
+              products?.length>0?
+              sorted?.map(({image,id})=><ProductsGridField id={id} key={id} src={image}/>):
+              <div style={styles.loading}>loading...</div>
+              }
+            </>
+          )
         }}
         </Store.Consumer>
       </div>
