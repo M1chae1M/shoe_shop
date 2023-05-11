@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.3.0",
+    "axios": "^1.4.0",
     "buffer": "^6.0.3",
     "dotenv": "^16.0.3",
     "jsonwebtoken": "^9.0.0",
