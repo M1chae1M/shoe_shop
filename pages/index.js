@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-// import ProductsList from "./ProductsList/ProductsList";
-// import TopFilters from "./Filters/TopFilters";
+import ProductsList from "./ProductsList/ProductsList";
+import TopFilters from "./Filters/TopFilters";
 import HOC from "./HOC";
 import URL from "./URLfilter";
 import WithAuth from "./WithAuth";
@@ -21,8 +21,8 @@ class App extends Component{
     }
     return(
       <div id="App" style={styles.App}>
-        {/* <TopFilters/> */}
-        {/* <ProductsList/> */}
+        <TopFilters/>
+        <ProductsList/>
       </div>
     )
   }
