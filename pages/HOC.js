@@ -30,7 +30,7 @@ export const HOC=(ToWrap)=>{
 
         this.setState(
           value!==''?
-          {search:products.filter(({name})=>name.toLowerCase().includes(value.toLowerCase()))}:
+          {search:products?.filter(({name})=>name.toLowerCase().includes(value.toLowerCase()))}:
           {search:[]}
         ,this.setState({searchValue:e.target.value}));
       }

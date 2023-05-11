@@ -56,10 +56,10 @@ export default class ProductsList extends Component{
             return products?.sort((a, b) =>b.quantity-a.quantity);
           }
           function sortBySex(products){
-            return products.filter(x=>x.sex.toLowerCase()===sex)
+            return products?.filter(x=>x.sex.toLowerCase()===sex)
           }
           function sortByType(products){
-            return products.filter(x=>x.category===type)
+            return products?.filter(x=>x.category===type)
           }
           let sorted=(()=>{
             switch(order){
