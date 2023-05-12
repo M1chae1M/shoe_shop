@@ -12,9 +12,9 @@ import Link from "next/link";
 
 export async function getStaticPaths(){
   if(!API_READY){
-    return {
-      paths: [],
-      fallback: 'blocking',
+    return{
+      paths:[],
+      fallback:'blocking',
     };
   }
 
