@@ -6,7 +6,7 @@ const ProductsHOC=(ToWrap)=>{
       products:[],
     }
     componentDidMount(){
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}products`)
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}product/all`)
       .then(res=>res.json())
       .then(({resp})=>this.setState({products:resp},console.log(this.state.products)))
     }

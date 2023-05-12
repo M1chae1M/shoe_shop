@@ -1,5 +1,5 @@
 import mysql from 'mysql2';
-import {connection} from './connectionWithDB';
+import {connection} from '../connectionWithDB';
 
 module.exports=(req, res)=>{
   const query=`SELECT * FROM products`;

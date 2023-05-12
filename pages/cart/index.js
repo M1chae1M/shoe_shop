@@ -1,10 +1,11 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import HOC,{Store} from "../HOC";
 import InCart from "./InCart";
 import GreenBTN from "../GreenBTN";
 import Link from "next/link";
 import WithAuth from "../WithAuth";
 import Router from "next/router";
+import ProductsHOC from "../ProductsHOC";
 
 class OpenCart extends Component{
   render(){
@@ -49,7 +50,7 @@ class OpenCart extends Component{
         const totalPaid=(cart.reduce((acc, elem)=>acc+elem.price*elem.howMany,0)).toFixed(2);
         const addToOrders=()=>{
           if(token){
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}addorder`,{
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}order`,{
               method:'POST',
               headers:{'Content-Type':'application/json'},
               body:JSON.stringify({token, cart})
@@ -92,4 +93,4 @@ class OpenCart extends Component{
   }
 }
 
-export default WithAuth(HOC(OpenCart));
+export default WithAuth(ProductsHOC(HOC(OpenCart)));

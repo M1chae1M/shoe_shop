@@ -10,7 +10,7 @@ export default class OrdersList extends Component{
   }
   componentDidMount(){
     const {token}=this.props;
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}orders`,{
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}order/all`,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({token})

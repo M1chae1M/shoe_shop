@@ -6,6 +6,7 @@ import {TbLogout} from 'react-icons/tb';
 import {glbl} from "../_app";
 import {Store} from "../HOC";
 import OrdersList from "./OrdersList";
+import ProductsHOC from "../ProductsHOC";
 
 class Profile extends Component{
   render(){
@@ -57,4 +58,4 @@ class Profile extends Component{
   }
 }
 
-export default WithAuth(HOC(WithLogin(Profile)));
+export default WithAuth(ProductsHOC(HOC(WithLogin(Profile))));

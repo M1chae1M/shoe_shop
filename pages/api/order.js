@@ -13,15 +13,17 @@ const createDate=()=>{
 }
 
 module.exports=(req, res)=>{
-  const {body}=req;
-  const cart=JSON.stringify(body.cart);
-  auth(req, res)
-  .then(({data,login})=>{
-    if(data.length>0){
-      const date=createDate();
-      const state='we are waiting for the payment to be posted';
-      const query=`INSERT INTO orders (id, user, order_cart, state, date) VALUES (NULL, "${login}", '${cart}', "${state}", "${date}");`;
-      connection.query(query);
-    }
-  })
+  const {body,method}=req;
+  if(method==='POST'){
+    const cart=JSON.stringify(body.cart);
+    auth(req, res)
+    .then(({data,login})=>{
+      if(data.length>0){
+        const date=createDate();
+        const state='we are waiting for the payment to be posted';
+        const query=`INSERT INTO orders (id, user, order_cart, state, date) VALUES (NULL, "${login}", '${cart}', "${state}", "${date}");`;
+        connection.query(query);
+      }
+    })
+  }
 }

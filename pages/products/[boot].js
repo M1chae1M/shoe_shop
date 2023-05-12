@@ -18,7 +18,7 @@ export async function getStaticPaths(){
     };
   }
 
-  const paths=await fetch(`${process.env.NEXT_PUBLIC_API_URL}products`)
+  const paths=await fetch(`${process.env.NEXT_PUBLIC_API_URL}product/all`)
   .then(res=>res.json())
   .then(res=>{
     return res.resp?.map((product)=>({
@@ -34,12 +34,11 @@ export async function getStaticPaths(){
 export async function getStaticProps(ctx){
   const {boot}=ctx.params;
 
-  const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}singleProduct`,{
-    method:'POST',
+  const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}product/${boot}`,{
+    method:'GET',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({id:boot})
   })
-  .then(resp=>resp.json())
+  .then(res=>res.json())
   .then(resp=>resp.resp);
   const data=res;
   return{props:{data}}
