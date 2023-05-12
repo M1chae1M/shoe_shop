@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import GreenBTN from "../GreenBTN";
+import GreenBTN from "../SmallComponents/GreenBTN";
 import Background from "./Background";
-import Number from "../Number";
-import SelectC,{OptionC} from "../SelectC";
+import Number from "../SmallComponents/Number";
+import SelectC,{OptionC} from "../SmallComponents/SelectC";
 
 export default class Modal extends Component{
   state={

@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {Store} from "../HOC";
+import {Store} from "../HOC/HOC";
 import ProductsGridField from "./ProductsGridField";
 import {glbl,sort} from "../_app";
-import Spinner from "../Spinner";
+import Spinner from "../SmallComponents/Spinner";
 
 export default class ProductsList extends Component{
   render(){

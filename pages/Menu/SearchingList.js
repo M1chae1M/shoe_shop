@@ -1,8 +1,8 @@
-import {Store} from "../HOC";
+import {Store} from "../HOC/HOC";
 import Link from "next/link";
 import {glbl} from "../_app";
 import React, {Component} from "react";
-import ImgFrame from "../ImgFrame";
+import ImgFrame from "../SmallComponents/ImgFrame";
 import Background from "../Modal/Background";
 
 export default class SearchingList extends Component{

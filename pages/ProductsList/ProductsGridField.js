@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import Link from "next/link";
-import {Store} from "../HOC";
-import ImgFrame from "../ImgFrame";
-import GreenBTN from "../GreenBTN";
+import {Store} from "../HOC/HOC";
+import ImgFrame from "../SmallComponents/ImgFrame";
+import GreenBTN from "../SmallComponents/GreenBTN";
 import Modal from '../Modal/Modal';
 import {glbl} from "../_app";
-import Spinner from "../Spinner";
+import Spinner from "../SmallComponents/Spinner";
 
 export default class ProductsGridField extends Component{
   state={

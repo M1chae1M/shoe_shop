@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Menu from "./Menu/Menu";
+import Menu from "../Menu/Menu";
 
 export const Store=React.createContext();
 

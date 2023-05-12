@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Router from 'next/router';
-import Spinner from '../Spinner';
+import Spinner from '../SmallComponents/Spinner';
 
 export default class OrdersList extends Component{
   state={

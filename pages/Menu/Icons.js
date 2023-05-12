@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {AiOutlineShoppingCart,AiOutlineHome} from 'react-icons/ai';
 import {CgProfile} from 'react-icons/cg';
-import {Store} from "../HOC";
+import {Store} from "../HOC/HOC";
 import MenuBTN from "./MenuBTN";
 import {glbl} from "../_app";
 

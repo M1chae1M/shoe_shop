@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import ProductsList from "./ProductsList/ProductsList";
 import TopFilters from "./Filters/TopFilters";
-import HOC from "./HOC";
-import URL from "./URLfilter";
-import WithAuth from "./WithAuth";
-import ProductsHOC from "./ProductsHOC";
+import HOC from "./HOC/HOC";
+import URL from "./HOC/URLfilter";
+import WithAuth from "./HOC/WithAuth";
+import ProductsHOC from "./HOC/ProductsHOC";
 
 class App extends Component{
   render(){

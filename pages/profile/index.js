@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-import HOC from "../HOC";
-import WithAuth from "../WithAuth";
+import HOC from "../HOC/HOC";
+import WithAuth from "../HOC/WithAuth";
 import WithLogin from "../login/WithLogin";
 import {TbLogout} from 'react-icons/tb';
 import {glbl} from "../_app";
-import {Store} from "../HOC";
+import {Store} from "../HOC/HOC";
 import OrdersList from "./OrdersList";
-import ProductsHOC from "../ProductsHOC";
+import ProductsHOC from "../HOC/ProductsHOC";
 
 class Profile extends Component{
   render(){

@@ -1,13 +1,13 @@
 import React, {Component} from "react";
 import {API_READY} from '../../config';
 import fetch from 'node-fetch';
-import HOC,{Store} from "../HOC";
+import HOC,{Store} from "../HOC/HOC";
 import {glbl} from "../_app";
-import ImgFrame from "../ImgFrame";
-import GreenBTN from "../GreenBTN";
-import Number from "../Number";
+import ImgFrame from "../SmallComponents/ImgFrame";
+import GreenBTN from "../SmallComponents/GreenBTN";
+import Number from "../SmallComponents/Number";
 import Router from "next/router";
-import SelectC, {OptionC} from "../SelectC";
+import SelectC, {OptionC} from "../SmallComponents/SelectC";
 import Link from "next/link";
 
 export async function getStaticPaths(){

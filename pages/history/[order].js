@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import HOC from "../HOC";
-import WithAuth from "../WithAuth";
-import ImgFrame from "../ImgFrame";
+import HOC from "../HOC/HOC";
+import WithAuth from "../HOC/WithAuth";
+import ImgFrame from "../SmallComponents/ImgFrame";
 import Link from "next/link";
 import {HiOutlineArrowUturnLeft} from 'react-icons/hi2';
 import Router from "next/router";
@@ -47,10 +47,16 @@ class Order extends Component{
       if(localStorage?.getItem('token')){
         const {order}=comp.props;
         const token=await localStorage.getItem('token')
-        const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}singleOrder`,{
+        // const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}singleOrder`,{
+        //   method:'POST',
+        //   headers:{'Content-Type':'application/json'},
+        //   body:JSON.stringify({token,id:order})
+        // })
+
+        const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}order/${order}`,{
           method:'POST',
           headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({token,id:order})
+          body:JSON.stringify({token})
         })
         .then(res=>res.json())
         .then(({data})=>{

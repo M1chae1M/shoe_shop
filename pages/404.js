@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import HOC from "./HOC";
+import HOC from "./HOC/HOC";
 import Router from "next/router";
+import ProductsHOC from "./HOC/ProductsHOC";
 
 class ErrorPage extends Component{
   state={
@@ -40,4 +41,4 @@ class ErrorPage extends Component{
   }
 }
 
-export default HOC(ErrorPage);
+export default ProductsHOC(HOC(ErrorPage));

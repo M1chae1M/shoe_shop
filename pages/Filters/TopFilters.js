@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import {Store} from "../HOC";
+import {Store} from "../HOC/HOC";
 import Router from "next/router";
-import SelectC, {OptionC} from "../SelectC";
+import SelectC, {OptionC} from "../SmallComponents/SelectC";
 
 export default class TopFilters extends Component{
   render(){

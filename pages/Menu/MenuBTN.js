@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Link from "next/link";
-import {Store} from "../HOC";
+import {Store} from "../HOC/HOC";
 
 export default class MenuBTN extends Component{
   render() {

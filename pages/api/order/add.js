@@ -1,5 +1,5 @@
-import {connection} from './connectionWithDB';
-import auth from './authPromise';
+import {connection} from '../connectionWithDB';
+import auth from '../authPromise';
 
 const createDate=()=>{
   const today=new Date();
