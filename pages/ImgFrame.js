@@ -1,8 +1,21 @@
 import React, {Component} from "react";
+import Spinner from "./Spinner";
+
+const imgref=React.createRef();
 
 export default class ImgFrame extends Component{
+  state={
+    loading:true,
+  }
+  componentDidMount(){
+    imgref?.current && this.loadIMG(this);
+  }
+  loadIMG(comp){
+    comp.setState({loading:false})
+  }
   render(){
-    const {src,alt,children,className,x,y,id,endloading}=this.props;
+    const {loading}=this.state;
+    const {src,alt,children,className,x,y,id,endloading,shadow}=this.props;
     const styles={
       ImgFrame:{
         height:y,
@@ -23,10 +36,17 @@ export default class ImgFrame extends Component{
       img:{
         height:y,
       },
+      hidden:{
+        display:'none',
+      }
+    }
+    const onLoad=()=>{
+      this.loadIMG(this)
     }
     return(
-      <div style={{...styles.ImgFrame,...this.props.shadow}} id={id}>
-        <img style={styles.img} src={src} alt={alt} onLoad={endloading}/>
+      <div style={{...styles.ImgFrame,...shadow}} id={id}>
+        {loading && <Spinner/>}
+        <img ref={imgref} src={src} alt={alt} onLoad={onLoad} style={{...styles.img,...(loading?styles.hidden:{})}}/>
         {children}
       </div>
     )

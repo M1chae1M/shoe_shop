@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default class InCart extends Component{
   render(){
-    const {id,src,name,price,quantity,size,alt,cart,endloading}=this.props;
+    const {id,src,name,price,quantity,size,alt,cart}=this.props;
     const styles={
       inCart:{
         display:'grid',
@@ -40,7 +40,7 @@ export default class InCart extends Component{
         return(
           <div style={styles.inCart}>
             <Link href={`/products/${id}`}>
-              <ImgFrame src={src} alt={alt} x='95px' y='95px' id="bigPhoto" endloading={endloading}/>
+              <ImgFrame src={src} alt={alt} x='95px' y='95px' id="bigPhoto"/>
             </Link>
             <div>
               <div>Name: {name}</div>

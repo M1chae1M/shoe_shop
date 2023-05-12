@@ -93,7 +93,8 @@ export default class ProductsList extends Component{
             <>
               {
                 products?.length>0?
-                  sorted?.map(({image,id})=><ProductsGridField id={id} key={id} src={image}/>):
+                  sorted?.map(({image,id})=><ProductsGridField id={id} key={id} src={image}/>)
+                  :
                     <div style={styles.loading}><Spinner/></div>
               }
             </>

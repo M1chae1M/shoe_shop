@@ -11,7 +11,6 @@ import SelectC, {OptionC} from "../SelectC";
 import Link from "next/link";
 
 export async function getStaticPaths(){
-
   if(!API_READY){
     return {
       paths: [],

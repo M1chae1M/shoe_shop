@@ -52,6 +52,9 @@ class OpenCart extends Component{
         const {cart,profile,changeState}=value??{};
         const {token}=profile??{};
         const totalPaid=(cart.reduce((acc, elem)=>acc+elem.price*elem.howMany,0)).toFixed(2);
+        const endloading=()=>{
+          this.setState({loading:false})
+        }
         const addToOrders=()=>{
           if(token){
             fetch(`${process.env.NEXT_PUBLIC_API_URL}addorder`,{
@@ -63,26 +66,29 @@ class OpenCart extends Component{
             .then(changeState({cart:[]}))
           }else Router.push('/profile')
         }
-        const endloading=()=>{
-          this.setState({loading:false})
-        }
         return(
           <div style={styles.cart}>
-            {loading && <Spinner/>}
+            {/* {loading && <Spinner/>} */}
+            {/* {loading?'loading':'noloading'} */}
             <div style={{...styles.header}}>Cart</div>
+            {/* <div style={{...styles.header,...(loading?styles.hidden:{display:'block'})}}>Cart</div> */}
             {
               cart.length>0?
-                <div style={styles.hidden}>
+              // <div style={loading?styles.hidden:{display:'block'}}>
+                <div>
                   <div style={{...styles.cartList,...styles.size}}>
                     {cart?.map(({id,image,name,price,howMany,sizeState,time})=>
-                    <InCart key={time} id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart} endloading={endloading}/>)}
+                    <InCart key={time} id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart}
+                    // endloading={endloading}
+                    />)}
                   </div>
                   <div style={styles.total}>
                   Total to be paid: {totalPaid} PLN
                     <GreenBTN value="PAY" className="GreenBTN" onClick={addToOrders}/>
                   </div>
                 </div>:
-                <div style={styles.hidden}>
+                <div>
+                {/* <div style={loading?styles.hidden:{display:'block'}}> */}
                   <div style={styles.size}>
                     <div style={styles.empty}>Your cart is empty</div>
                   </div>
