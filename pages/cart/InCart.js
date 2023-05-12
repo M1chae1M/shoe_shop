@@ -7,7 +7,9 @@ import Link from "next/link";
 
 export default class InCart extends Component{
   render(){
-    const {id,src,name,price,quantity,size,alt,cart}=this.props;
+    // const {id,src,name,price,quantity,size,alt,cart}=this.props;
+    const {data,cart}=this.props;
+    const {id,image,name,price,howMany,sizeState}=data;
     const styles={
       inCart:{
         display:'grid',
@@ -27,7 +29,7 @@ export default class InCart extends Component{
       <Store.Consumer>
       {value=>{
         const {changeState}=value??{};
-        const totalPrice=(price * quantity)?.toFixed?.(2);
+        const totalPrice=(price * howMany)?.toFixed?.(2);
         const removeFromCart=()=>{
           let removeIndex;
           cart.map((x,i)=>{
@@ -40,13 +42,13 @@ export default class InCart extends Component{
         return(
           <div style={styles.inCart}>
             <Link href={`/products/${id}`}>
-              <ImgFrame src={src} alt={alt} x='95px' y='95px' id="bigPhoto"/>
+              <ImgFrame src={image} alt='' x='95px' y='95px' id="bigPhoto"/>
             </Link>
             <div>
               <div>Name: {name}</div>
-              <div>Size: {size}</div>
+              <div>Size: {sizeState}</div>
               <div>Price: {price?.toFixed?.(2)} PLN</div>
-              <div>How many: {quantity}</div>
+              <div>How many: {howMany}</div>
               <div>Total: {totalPrice} PLN</div>
             </div>
             <CgClose style={styles.close} onClick={removeFromCart} className="GreenBTN"/>

@@ -5,14 +5,9 @@ import GreenBTN from "../GreenBTN";
 import Link from "next/link";
 import WithAuth from "../WithAuth";
 import Router from "next/router";
-import Spinner from "../Spinner";
 
 class OpenCart extends Component{
-  state={
-    loading:true,
-  }
   render(){
-    const {loading}=this.state;
     const styles={
       cart:{
         display:'grid',
@@ -52,9 +47,6 @@ class OpenCart extends Component{
         const {cart,profile,changeState}=value??{};
         const {token}=profile??{};
         const totalPaid=(cart.reduce((acc, elem)=>acc+elem.price*elem.howMany,0)).toFixed(2);
-        const endloading=()=>{
-          this.setState({loading:false})
-        }
         const addToOrders=()=>{
           if(token){
             fetch(`${process.env.NEXT_PUBLIC_API_URL}addorder`,{
@@ -68,18 +60,23 @@ class OpenCart extends Component{
         }
         return(
           <div style={styles.cart}>
-            {/* {loading && <Spinner/>} */}
-            {/* {loading?'loading':'noloading'} */}
             <div style={{...styles.header}}>Cart</div>
-            {/* <div style={{...styles.header,...(loading?styles.hidden:{display:'block'})}}>Cart</div> */}
             {
               cart.length>0?
-              // <div style={loading?styles.hidden:{display:'block'}}>
                 <div>
                   <div style={{...styles.cartList,...styles.size}}>
-                    {cart?.map(({id,image,name,price,howMany,sizeState,time})=>
-                    <InCart key={time} id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart}
-                    // endloading={endloading}
+                    {/* {cart?.map(({id,image,name,price,howMany,sizeState,time})=>
+                    
+                    <InCart key={time}
+                    id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart}
+                    />)} */}
+                    {cart?.map(({time,...x})=>
+                    <InCart key={time}
+                    data={x} cart={cart}
+                    // quantity,
+
+
+                    // id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart}
                     />)}
                   </div>
                   <div style={styles.total}>
@@ -88,7 +85,6 @@ class OpenCart extends Component{
                   </div>
                 </div>:
                 <div>
-                {/* <div style={loading?styles.hidden:{display:'block'}}> */}
                   <div style={styles.size}>
                     <div style={styles.empty}>Your cart is empty</div>
                   </div>
