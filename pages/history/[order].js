@@ -8,6 +8,97 @@ import Router from "next/router";
 import ErrorPage from '../404';
 import ProductsHOC from "../HOC/ProductsHOC";
 
+
+class OrderTable extends Component{
+  render(){
+    const {order_date,data,order_cart,totalPrice}=this.props;
+    const styles={
+      backBTN:{
+        cursor:'pointer',
+        top:'0%',
+        left:'0%',
+        position:'absolute',
+        color:'black',
+        fontSize:'18px',
+        transition:'all 0.125s ease-in-out',
+        fontWeight:'bold',
+      },
+      table:{
+        table:{
+          textAlign:'center',
+        },
+        td:{
+          border:'solid black 1px',
+          padding:'5px',
+        },
+        tr:{
+          cursor:'pointer',
+          width:'100%',
+          transition:'all 0.125s ease-in-out',
+        },
+      },
+      product:{
+        display:'grid',
+        alignItems:'center',
+        justifyItems:'center',
+        gridTemplateColumns:'70px auto',
+        border:'solid black 1px',
+        margin:'3px 0px',
+        padding:'5px 3px',
+      },
+      productList:{
+        display:'grid',
+        justifyItems:'center',
+        alignItems:'center',
+        minHeight:'110px',
+        maxHeight:'130px',
+        overflowY:'scroll',
+        overflowY:'auto',
+        padding:'0px 3px',
+        width:'fit-content',
+      },
+      order:{
+        position:'relative',
+        padding:'18px',
+      },
+    }
+    return(
+      <div style={styles.order}>
+      <Link href='/profile'>
+        <HiOutlineArrowUturnLeft style={styles.backBTN} id="backBTN"/>
+      </Link>
+      <table style={styles.table.table} cellSpacing={1}>
+        <thead>
+          <tr>
+            <td style={styles.table.td}>Date</td>
+            <td style={styles.table.td}>State</td>
+            <td style={styles.table.td}>Order</td>
+            <td style={styles.table.td}>Total</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style={styles.table.tr}>
+            <td style={styles.table.td}>{order_date}</td>
+            <td style={styles.table.td}>{data.state}</td>
+            <td style={styles.table.td}>
+              <div style={styles.productList}>
+                {order_cart.map((x,i)=>
+                  <div key={i} style={styles.product}>
+                    <ImgFrame src={x.image} alt={`image of ${x.name}`} x='60px' y='40px'/>
+                    <div>{x.howMany} * {x.price}</div>
+                  </div>
+                )}
+              </div>
+            </td>
+            <td style={styles.table.td}>{totalPrice} PLN</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    )
+  }
+}
+
 export async function getStaticPaths(){
   return{
     paths:[{params:{order:'15'}}],
@@ -64,104 +155,20 @@ class Order extends Component{
     const {data}=this.state;
     const order_cart=data?.order_cart?JSON.parse(data.order_cart):[];
     const order_date=new Date(data.date).toLocaleString();
-    const styles={
-      product:{
-        display:'grid',
-        alignItems:'center',
-        justifyItems:'center',
-        gridTemplateColumns:'70px auto',
-        border:'solid black 1px',
-        margin:'3px 0px',
-        padding:'5px 3px',
-      },
-      productList:{
-        display:'grid',
-        justifyItems:'center',
-        alignItems:'center',
-        minHeight:'110px',
-        maxHeight:'130px',
-        overflowY:'scroll',
-        overflowY:'auto',
-        padding:'0px 3px',
-        width:'fit-content',
-      },
-      order:{
-        position:'relative',
-        padding:'18px',
-      },
-      backBTN:{
-        cursor:'pointer',
-        top:'0%',
-        left:'0%',
-        position:'absolute',
-        color:'black',
-        fontSize:'18px',
-        transition:'all 0.125s ease-in-out',
-        fontWeight:'bold',
-      },
-      table:{
-        table:{
-          textAlign:'center',
-        },
-        td:{
-          border:'solid black 1px',
-          padding:'5px',
-        },
-        tr:{
-          cursor:'pointer',
-          width:'100%',
-          transition:'all 0.125s ease-in-out',
-        },
-      }
-    }
     const totalPrice=(order_cart?order_cart?.reduce((acc, elem)=>acc+elem.price*elem.howMany,0):0).toFixed(2);
     return(
       <>
         {
-        order_date!=='Invalid Date'?
-
-
-
-      <div style={styles.order}>
-        <Link href='/profile'>
-          <HiOutlineArrowUturnLeft style={styles.backBTN} id="backBTN"/>
-        </Link>
-       
-        <table style={styles.table.table} cellSpacing={1}>
-          <thead>
-            <tr>
-              <td style={styles.table.td}>Date</td>
-              <td style={styles.table.td}>State</td>
-              <td style={styles.table.td}>Order</td>
-              <td style={styles.table.td}>Total</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={styles.table.tr}>
-              <td style={styles.table.td}>{order_date}</td>
-              <td style={styles.table.td}>{data.state}</td>
-              <td style={styles.table.td}>
-                <div style={styles.productList}>
-                  {order_cart.map((x,i)=>
-                    <div key={i} style={styles.product}>
-                      <ImgFrame src={x.image} alt={`image of ${x.name}`} x='60px' y='40px'/>
-                      <div>{x.howMany} * {x.price}</div>
-                    </div>
-                  )}
-                </div>
-              </td>
-              <td style={styles.table.td}>{totalPrice} PLN</td>
-            </tr>
-          </tbody>
-        </table>
-      
-      </div>
-      :
-      <ErrorPage/>
-      }
-
+          order_date!=='Invalid Date'?
+            <OrderTable
+              order_date={order_date}
+              data={data}
+              order_cart={order_cart}
+              totalPrice={totalPrice}
+            />:
+            <ErrorPage/>
+        }
       </>
-
     )
   }
 }
