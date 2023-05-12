@@ -65,19 +65,7 @@ class OpenCart extends Component{
               cart.length>0?
                 <div>
                   <div style={{...styles.cartList,...styles.size}}>
-                    {/* {cart?.map(({id,image,name,price,howMany,sizeState,time})=>
-                    
-                    <InCart key={time}
-                    id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart}
-                    />)} */}
-                    {cart?.map(({time,...x})=>
-                    <InCart key={time}
-                    data={x} cart={cart}
-                    // quantity,
-
-
-                    // id={id} src={image} alt='' name={name} price={price} quantity={howMany} size={sizeState} cart={cart}
-                    />)}
+                    {cart?.map(({time,...x})=><InCart key={time} data={x} cart={cart}/>)}
                   </div>
                   <div style={styles.total}>
                   Total to be paid: {totalPaid} PLN
