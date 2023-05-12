@@ -5,6 +5,8 @@ import ImgFrame from "../SmallComponents/ImgFrame";
 import Link from "next/link";
 import {HiOutlineArrowUturnLeft} from 'react-icons/hi2';
 import Router from "next/router";
+import ErrorPage from '../404';
+import ProductsHOC from "../HOC/ProductsHOC";
 
 export async function getStaticPaths(){
   return{
@@ -28,13 +30,13 @@ class Order extends Component{
     this.fetchOrder(this)
   }
   componentDidUpdate(){
-      this.fetchOrder(this);
-      if(task) clearTimeout(task)
-      task=setTimeout(()=>{
-        if(this.state.data.length<1){
-          Router.push('/profile')
-        }
-      },1000)
+    this.fetchOrder(this);
+    if(task) clearTimeout(task)
+    task=setTimeout(()=>{
+      if(this.state.data.length<1){
+        Router.push('/profile')
+      }
+    },1000)
   }
   shouldComponentUpdate(prevProps, prevState){
     const condition1=JSON.stringify(prevState.data)!==JSON.stringify(this.state.data)
@@ -46,12 +48,7 @@ class Order extends Component{
     (async function(){
       if(localStorage?.getItem('token')){
         const {order}=comp.props;
-        const token=await localStorage.getItem('token')
-        // const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}singleOrder`,{
-        //   method:'POST',
-        //   headers:{'Content-Type':'application/json'},
-        //   body:JSON.stringify({token,id:order})
-        // })
+        const token=await localStorage.getItem('token');
 
         const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}order/${order}`,{
           method:'POST',
@@ -59,15 +56,14 @@ class Order extends Component{
           body:JSON.stringify({token})
         })
         .then(res=>res.json())
-        .then(({data})=>{
-          comp.setState({data:data})
-        })
+        .then(({data})=>comp.setState({data:data}))
       }
     })()
   }
   render(){
     const {data}=this.state;
     const order_cart=data?.order_cart?JSON.parse(data.order_cart):[];
+    const order_date=new Date(data.date).toLocaleString();
     const styles={
       product:{
         display:'grid',
@@ -120,10 +116,17 @@ class Order extends Component{
     }
     const totalPrice=(order_cart?order_cart?.reduce((acc, elem)=>acc+elem.price*elem.howMany,0):0).toFixed(2);
     return(
+      <>
+        {
+        order_date!=='Invalid Date'?
+
+
+
       <div style={styles.order}>
         <Link href='/profile'>
           <HiOutlineArrowUturnLeft style={styles.backBTN} id="backBTN"/>
         </Link>
+       
         <table style={styles.table.table} cellSpacing={1}>
           <thead>
             <tr>
@@ -135,7 +138,7 @@ class Order extends Component{
           </thead>
           <tbody>
             <tr style={styles.table.tr}>
-              <td style={styles.table.td}>{new Date(data.date).toLocaleString()}</td>
+              <td style={styles.table.td}>{order_date}</td>
               <td style={styles.table.td}>{data.state}</td>
               <td style={styles.table.td}>
                 <div style={styles.productList}>
@@ -151,9 +154,16 @@ class Order extends Component{
             </tr>
           </tbody>
         </table>
+      
       </div>
+      :
+      <ErrorPage/>
+      }
+
+      </>
+
     )
   }
 }
 
-export default WithAuth(HOC(Order));
+export default WithAuth(ProductsHOC(HOC(Order)));

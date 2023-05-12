@@ -7,7 +7,6 @@ import Link from "next/link";
 
 export default class InCart extends Component{
   render(){
-    // const {id,src,name,price,quantity,size,alt,cart}=this.props;
     const {data,cart}=this.props;
     const {id,image,name,price,howMany,sizeState}=data;
     const styles={
