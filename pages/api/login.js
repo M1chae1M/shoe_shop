@@ -19,7 +19,7 @@ module.exports=(req, res)=>{
         const token=JWT.sign({login,password}, verificationKey);
         res.status(200).json({login, logged:true, token,img, message:''});
       }
-      else res.status(200).json({logged:false, message:'Failed login! Try again!'})
+      else res.status(401).json({logged:false, message:'Failed login! Try again!'})
     }
   });
 };

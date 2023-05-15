@@ -12,6 +12,6 @@ module.exports=(req, res)=>{
         else res.status(200).json({data:[],message:'no orders'})
       })
     }
-    else res.status(200).json({data:[],message:'no orders'})
+    else res.status(401).json({data:[],message:'no orders'})
   })
 }

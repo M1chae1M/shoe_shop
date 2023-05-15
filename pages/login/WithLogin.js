@@ -53,7 +53,6 @@ const WithLogin=(ToWrap)=>{
           })
         }
         const signIn=(e)=>{
-          console.log('sign in')
           fetch(`${process.env.NEXT_PUBLIC_API_URL}signIn`,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
