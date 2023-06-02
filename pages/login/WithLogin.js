@@ -32,7 +32,22 @@ const WithLogin=(ToWrap)=>{
             textAlign:'center',
             minHeight:'45px',
             maxHeight:'45px',
+            position:'absolute',
+            bottom:'0%',
+            left:'50%',
+            transform:'translate(-50%,120%)',
           },
+          loginForm:{
+            display:'grid',
+            position:'relative',
+            gridTemplateColumns:'repeat(auto-fit, minmax(120px, 120px))',
+            padding:'6px',
+            minWidth:'60%',
+            gridRowGap:'6px',
+            width:'fit-content',
+            alignItems:'center',
+            justifyContent:'center',
+          }
         }
         const tryToLogIn=(e)=>{
           e.preventDefault();
@@ -71,7 +86,7 @@ const WithLogin=(ToWrap)=>{
           <>
             {
               !logged? 
-                <form onSubmit={tryToLogIn}>
+                <form onSubmit={tryToLogIn} id='loginForm' style={styles.loginForm}>
                   <input ref={loginRef} type='text' placeholder='login' style={styles.submit} className='login'/>
                   <input ref={passwordRef} type='password' placeholder='password' style={styles.submit} className='login'/>
                   <input type='submit' value='Login' style={styles.submit} className='login'/>

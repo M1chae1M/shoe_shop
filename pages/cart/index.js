@@ -14,6 +14,8 @@ class OpenCart extends Component{
         display:'grid',
         justifyItems:'center',
         alignContent:'center',
+        // border:'solid black 3px',
+        // width:'60%',
       },
       cartList:{
         overflowY:'scroll',
@@ -31,7 +33,6 @@ class OpenCart extends Component{
         alignItems:'center',
       },
       total:{
-        width:'300px',
         textAlign:'center',
       },
       header:{

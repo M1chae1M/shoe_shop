@@ -11,3 +11,14 @@ export default function Document(){
     </Html>
   )
 }
+
+export const order=[
+  {value:'cheapest',text:'from the cheapest'},
+  {value:'expensive',text:'from the most expensive'},
+  {value:'AtoZ',text:'A to Z'},
+  {value:'ZtoA',text:'Z to A'},
+  {value:'quantityDsc',text:'quantity descending'},
+  {value:'quantityAsc',text:'quantity ascending'}
+];
+export const types=['all','sport','casual'];
+export const sexes=['All','Man','Woman'];
