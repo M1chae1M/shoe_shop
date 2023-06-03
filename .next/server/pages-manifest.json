@@ -2,5 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/history/[order]": "pages/history/[order].js"
+  "/products/[boot]": "pages/products/[boot].js",
+  "/api/product": "pages/api/product.js",
+  "/": "pages/index.js",
+  "/api/product/all": "pages/api/product/all.js",
+  "/api/auth": "pages/api/auth.js"
 }

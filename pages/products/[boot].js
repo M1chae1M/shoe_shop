@@ -11,23 +11,25 @@ import SelectC, {OptionC} from "../SmallComponents/SelectC";
 import Link from "next/link";
 
 export async function getStaticPaths(){
-  if(!API_READY){
-    return{
-      paths:[],
-      fallback:'blocking',
-    };
-  }
+  // if(!API_READY){
+  //   return{
+  //     paths:[],
+  //     fallback:'blocking',
+  //   };
+  // }
 
-  const paths=await fetch(`${process.env.NEXT_PUBLIC_API_URL}product/all`)
-  .then(res=>res.json())
-  .then(res=>{
-    return res.resp?.map((product)=>({
-      params:{boot:product.id.toString()},
-    }));
-  })
+  // const paths=await fetch(`${process.env.NEXT_PUBLIC_API_URL}product/all`)
+  // .then(res=>res.json())
+  // .then(res=>{
+  //   return res.resp?.map((product)=>({
+  //     params:{boot:product.id.toString()},
+  //   }));
+  // })
+  const paths=[];
   return{
     paths,
-    fallback:false,
+    // fallback:false,
+    fallback:true,
   };
 }
 
@@ -55,8 +57,9 @@ class Boot extends Component{
     howMany:1,
   }
   render(){
-    const {data}=this.props;
-    const {id,image,sex,description,category,name,price,quantity,sizes}=data;
+    const {data}=this.props??{};
+    const {id,image,sex,description,category,name,price,quantity}=data??0;
+    const {sizes}=data??'';
     const {sizeState,howMany}=this.state;
     const styles={
       Product:{
@@ -123,7 +126,7 @@ class Boot extends Component{
             <div style={styles.path}>
               {'Sizes: '}
               <SelectC value={sizeState} onChange={onChange} className="GreenBTN">
-                {sizes.split(',').map(x=><OptionC key={x} value={x}>{x}</OptionC>)}
+                {sizes?.split(',').map(x=><OptionC key={x} value={x}>{x}</OptionC>)}
               </SelectC>
             </div>
             <div style={styles.path}>Available quantity: {quantity}</div>
