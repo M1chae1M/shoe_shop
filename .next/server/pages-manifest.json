@@ -2,11 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/api/product/all": "pages/api/product/all.js",
-  "/profile": "pages/profile.js",
-  "/api/order/all": "pages/api/order/all.js",
-  "/history/[order]": "pages/history/[order].js",
-  "/api/order": "pages/api/order.js",
-  "/api/auth": "pages/api/auth.js"
+  "/history/[order]": "pages/history/[order].js"
 }

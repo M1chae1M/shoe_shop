@@ -69,9 +69,9 @@ class Order extends Component{
     return(
       <>
         {
-          order_date!=='Invalid Date'?
-            <OrderTable order_date={order_date} data={data} order_cart={order_cart} totalPrice={totalPrice}/>:
-          <ErrorPage/>
+          // order_date!=='Invalid Date'?
+            <OrderTable order_date={order_date} data={data} order_cart={order_cart} totalPrice={totalPrice}/>
+            // :<ErrorPage/>
         }
       </>
     )
