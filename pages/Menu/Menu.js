@@ -13,7 +13,7 @@ export default class Menu extends Component{
         position:'fixed',
         justifyContent:'space-between',
         top:'3%',
-        right:'3%',
+        right:'5%',
         display:'flex',
         zIndex:'1410',
       },
