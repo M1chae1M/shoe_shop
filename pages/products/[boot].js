@@ -33,10 +33,18 @@ export async function getStaticPaths(){
 
 export async function getStaticProps(ctx){
   const {boot}=ctx.params;
+  // const body={
+  //   boot
+  // }
+  // const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}product/${boot}`,{
+  //   method:'GET',
+  //   headers:{'Content-Type':'application/json'},
+  // })
 
-  const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}product/${boot}`,{
-    method:'GET',
+  const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}product`,{
+    method:'POST',
     headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({boot}),
   })
   .then(res=>res.json())
   .then(resp=>resp.resp);
@@ -49,6 +57,15 @@ class Boot extends Component{
     sizeState:this.props?.data?.sizes.split(',')[0]||'0',
     howMany:1,
   }
+  // componentDidMount(){
+    // fetch(`http://localhost:3000/api/product`,{
+    // method:'POST',
+    // headers:{'Content-Type':'application/json'},
+    // body:JSON.stringify({boot:11}),
+    // })
+    // .then(res=>res.json())
+    // .then(res=>console.log(res))
+  // }
   render(){
     const {data}=this.props;
     const {id,image,sex,description,category,name,price,quantity,sizes}=data;
