@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[298],{318:function(n,_,u){(window.__NEXT_P=window.__NEXT_P||[]).push(["/Menu/Icons",function(){return u(9862)}])}},function(n){n.O(0,[774,888,179],function(){return n(n.s=318)}),_N_E=n.O()}]);
