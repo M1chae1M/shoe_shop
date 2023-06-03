@@ -46,10 +46,15 @@ class Order extends Component{
         const {order}=comp.props;
         const token=await localStorage.getItem('token');
 
-        const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}order/${order}`,{
+        // const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}order/${order}`,{
+        //   method:'POST',
+        //   headers:{'Content-Type':'application/json'},
+        //   body:JSON.stringify({token})
+        // })
+        const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}order`,{
           method:'POST',
           headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({token})
+          body:JSON.stringify({token,order})
         })
         .then(res=>res.json())
         .then(({data})=>comp.setState({data:data}))
