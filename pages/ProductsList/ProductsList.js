@@ -16,10 +16,9 @@ export default class ProductsList extends Component{
         gridColumnGap:'6px',
         gridRowGap:'6px',
         width:'fit-content',
-        minHeight:`calc(${glbl._field_height} * 3 + 4 * 4px)`,
-        maxHeight:`calc(${glbl._field_height} * 3 + 4 * 4px)`,
-        height:'fit-content',
+        height:'70vh',
         position:'relative',
+        overflowY:'scroll',
       },
       loading:{
         position:'absolute',
