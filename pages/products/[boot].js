@@ -9,6 +9,7 @@ import Number from "../SmallComponents/Number";
 import Router from "next/router";
 import SelectC, {OptionC} from "../SmallComponents/SelectC";
 import Link from "next/link";
+import ProductsHOC from "../HOC/ProductsHOC";
 
 export async function getStaticPaths(){
   // if(!API_READY){
@@ -26,10 +27,14 @@ export async function getStaticPaths(){
   //   }));
   // })
   const paths=[];
+
+  for(let i=0;i<32;i++){
+    paths.push({params:{boot:i.toString()}})
+  }
   return{
     paths,
-    // fallback:false,
-    fallback:true,
+    fallback:false,
+    // fallback:true,
   };
 }
 
@@ -46,14 +51,15 @@ export async function getStaticProps(ctx){
     body:JSON.stringify({boot}),
   })
   .then(res=>res.json())
-  .then(resp=>resp.resp);
-  const data=res;
+  .then(resp=>resp.resp)
+  // .catch(err=>{return {}})
+  const data=res||{};
   return{props:{data}}
 }
 
 class Boot extends Component{
   state={
-    sizeState:this.props?.data?.sizes.split(',')[0]||'0',
+    sizeState:this.props?.data?.sizes?.split(',')[0]||'0',
     howMany:1,
   }
   render(){
@@ -146,4 +152,4 @@ class Boot extends Component{
 }
 
 // export default Boot;
-export default HOC(Boot);
+export default ProductsHOC(HOC(Boot));
