@@ -7,6 +7,48 @@ import WithAuth from "../HOC/WithAuth";
 import Router from "next/router";
 import ProductsHOC from "../HOC/ProductsHOC";
 
+
+const styles={
+  container:{
+    display:'grid',
+    justifyItems:'center',
+  },
+}
+
+class EmptyCartVariant extends Component{
+  render(){
+    return(
+      <div style={styles.container}>
+        <div style={styles.size}>
+          <div style={styles.empty}>Your cart is empty</div>
+        </div>
+        <div style={styles.total}>
+          First you need to add your orders to the cart
+          <Link href='/'>
+            <GreenBTN value="Back to shop" className="GreenBTN"/>
+          </Link>
+        </div>
+      </div>
+    )
+  }
+}
+
+class ProductsInCartVariant extends Component{
+  render(){
+    return(
+      <div style={styles.container}>
+        <div style={{...styles.cartList,...styles.size}}>
+          {cart?.map(({time,...x})=><InCart key={time} data={x} cart={cart}/>)}
+        </div>
+        <div style={styles.total}>
+        Total to be paid: {totalPaid} PLN
+          <GreenBTN value="PAY" className="GreenBTN" onClick={addToOrders}/>
+        </div>
+      </div>
+    )
+  }
+}
+
 class OpenCart extends Component{
   render(){
     const styles={
@@ -14,16 +56,14 @@ class OpenCart extends Component{
         display:'grid',
         justifyItems:'center',
         alignContent:'center',
-        // border:'solid black 3px',
-        // width:'60%',
       },
       cartList:{
         overflowY:'scroll',
       },
       size:{
-        maxHeight:'300px',
-        minHeight:'300px',
-        height:'300px',
+        minHeight:'180px',
+        display:'grid',
+        width:'70vw',
       },
       empty:{
         display:'grid',
@@ -34,6 +74,8 @@ class OpenCart extends Component{
       },
       total:{
         textAlign:'center',
+        width:'70vw',
+        maxWidth:'400px',
       },
       header:{
         fontSize:'1.2rem',
@@ -42,6 +84,10 @@ class OpenCart extends Component{
       hidden:{
         display:'none',
       },
+      // container:{
+      //   display:'grid',
+      //   justifyItems:'center',
+      // },
     }
     return(
       <Store.Consumer>
@@ -65,26 +111,36 @@ class OpenCart extends Component{
             <div style={{...styles.header}}>Cart</div>
             {
               cart.length>0?
-                <div>
-                  <div style={{...styles.cartList,...styles.size}}>
-                    {cart?.map(({time,...x})=><InCart key={time} data={x} cart={cart}/>)}
-                  </div>
-                  <div style={styles.total}>
-                  Total to be paid: {totalPaid} PLN
-                    <GreenBTN value="PAY" className="GreenBTN" onClick={addToOrders}/>
-                  </div>
-                </div>:
-                <div>
-                  <div style={styles.size}>
-                    <div style={styles.empty}>Your cart is empty</div>
-                  </div>
-                  <div style={styles.total}>
-                    First you need to add your orders to the cart
-                    <Link href='/'>
-                      <GreenBTN value="Back to shop" className="GreenBTN"/>
-                    </Link>
-                  </div>
-                </div>
+              <ProductsInCartVariant/>
+              :
+              <EmptyCartVariant/>
+
+
+
+
+
+
+              // cart.length>0?
+              //   <div style={styles.container}>
+              //     <div style={{...styles.cartList,...styles.size}}>
+              //       {cart?.map(({time,...x})=><InCart key={time} data={x} cart={cart}/>)}
+              //     </div>
+              //     <div style={styles.total}>
+              //     Total to be paid: {totalPaid} PLN
+              //       <GreenBTN value="PAY" className="GreenBTN" onClick={addToOrders}/>
+              //     </div>
+              //   </div>:
+              //   <div style={styles.container}>
+              //     <div style={styles.size}>
+              //       <div style={styles.empty}>Your cart is empty</div>
+              //     </div>
+              //     <div style={styles.total}>
+              //       First you need to add your orders to the cart
+              //       <Link href='/'>
+              //         <GreenBTN value="Back to shop" className="GreenBTN"/>
+              //       </Link>
+              //     </div>
+              //   </div>
             }
           </div>
         )

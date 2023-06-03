@@ -12,15 +12,20 @@ export default class InCart extends Component{
     const styles={
       inCart:{
         display:'grid',
-        gridTemplateColumns:`calc(${glbl._field_height} + 8px) calc(${glbl._field_height} * 2) auto`,
+        gridTemplateColumns:`calc(${glbl._field_height} + 8px) 50% 50px`,
+        justifyContent:'center',
         margin:'8px 0px',
         justifyItems:'center',
         alignItems:'center',
         position:'relative',
         overflow:'hidden',
       },
+      description:{
+        display:'grid',
+        width:'100%',
+      },
       close:{
-        fontSize:'60px',
+        fontSize:'50px',
         color:'red',
       },
     };
@@ -43,7 +48,7 @@ export default class InCart extends Component{
             <Link href={`/products/${id}`}>
               <ImgFrame src={image} alt='' x='95px' y='95px' id="bigPhoto"/>
             </Link>
-            <div>
+            <div style={styles.description}>
               <div>Name: {name}</div>
               <div>Size: {sizeState}</div>
               <div>Price: {price?.toFixed?.(2)} PLN</div>
