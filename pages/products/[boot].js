@@ -154,4 +154,5 @@ class Boot extends Component{
   }
 }
 
+// export default Boot;
 export default HOC(Boot);

@@ -78,11 +78,14 @@ export default class App extends React.Component{
   render(){
     const {legal,Component,pageProps}=this.props;
     return(
-      <>{
-        legal?
-          Component && <Component {...pageProps}/>:
-        <ErrorPage/>
-      }</>
+      <>
+      {
+        // legal?
+        //   Component && <Component {...pageProps}/>:
+        // <ErrorPage/>
+      }
+      <Component {...pageProps}/>
+      </>
     );
   }
 }
