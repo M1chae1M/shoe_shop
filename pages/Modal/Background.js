@@ -16,7 +16,6 @@ export default class Background extends Component{
         height:'100vh',
         zIndex:'2000',
         zIndex:zidx,
-        backdropFilter:'blur(1.8px)',
       }
     }
     return(
