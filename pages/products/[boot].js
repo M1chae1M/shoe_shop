@@ -12,12 +12,12 @@ import Link from "next/link";
 import ProductsHOC from "../HOC/ProductsHOC";
 
 export async function getStaticPaths(){
-  // if(!API_READY){
-  //   return{
-  //     paths:[],
-  //     fallback:'blocking',
-  //   };
-  // }
+  if(!API_READY){
+    return{
+      paths:[],
+      fallback:'blocking',
+    };
+  }
 
   // const paths=await fetch(`${process.env.NEXT_PUBLIC_API_URL}product/all`)
   // .then(res=>res.json())
@@ -29,7 +29,7 @@ export async function getStaticPaths(){
   const paths=[];
 
   for(let i=0;i<32;i++){
-    paths.push({params:{boot:i.toString()}})
+    paths.push({params:{boot:`${i}`}})
   }
   return{
     paths,
@@ -52,7 +52,6 @@ export async function getStaticProps(ctx){
   })
   .then(res=>res.json())
   .then(resp=>resp.resp)
-  // .catch(err=>{return {}})
   const data=res||{};
   return{props:{data}}
 }
