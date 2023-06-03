@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[310],{4896:function(n,u,_){(window.__NEXT_P=window.__NEXT_P||[]).push(["/Menu/Menu",function(){return _(9160)}])}},function(n){n.O(0,[774,888,179],function(){return n(n.s=4896)}),_N_E=n.O()}]);
