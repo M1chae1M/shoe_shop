@@ -12,6 +12,7 @@ export default class TopFilters extends Component{
         flexWrap:'wrap',
         gap:'5px',
         margin:'5px 0px',
+        justifyContent:'center',
       },
     }
     const changeURL=(newURL)=>{

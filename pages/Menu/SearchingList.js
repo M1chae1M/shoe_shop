@@ -66,7 +66,7 @@ export default class SearchingList extends Component{
                 </Link>
               )}
             </ul>
-            {search?.length>0 && <Background bgc={'transparent'} zidx='1300' onMouseDown={clickBground}/>}
+            {search?.length>0 && <Background bgc={'transparent'} style={{backdropFilter:'blur(0px)',}} zidx='1300' onMouseDown={clickBground}/>}
           </>
         )
       }}

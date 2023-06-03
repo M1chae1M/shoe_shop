@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 export default class Background extends Component{
   render(){
-    const {children,bgc,zidx}=this.props;
+    const {children,bgc,zidx,style}=this.props;
     const styles={
       Bground:{
         display:'grid',
@@ -20,7 +20,7 @@ export default class Background extends Component{
       }
     }
     return(
-      <div id="Background" style={styles.Bground} {...this.props}>
+      <div id="Background" style={{...styles.Bground,...style}} {...this.props}>
         {children}
       </div>
     )

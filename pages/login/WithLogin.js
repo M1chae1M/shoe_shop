@@ -86,7 +86,7 @@ const WithLogin=(ToWrap)=>{
           <>
             {
               !logged? 
-                <form onSubmit={tryToLogIn}>
+                <form onSubmit={tryToLogIn} id='loginForm' style={styles.loginForm}>
                   <input ref={loginRef} type='text' placeholder='login' style={styles.submit} className='login'/>
                   <input ref={passwordRef} type='password' placeholder='password' style={styles.submit} className='login'/>
                   <input type='submit' value='Login' style={styles.submit} className='login'/>
